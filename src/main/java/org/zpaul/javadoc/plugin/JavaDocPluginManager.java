@@ -20,15 +20,10 @@ public class JavaDocPluginManager {
 	private static final List<IJavaDocPlugin> list = new ArrayList(8);
 
 	static {
-		//TODO 后续考虑配置化  从xml读取
-
-		// LomBok 插件 扫描 LomBok相关注解 补上 get set 方法
 		list.add(new LomBokPlugin());
 
-		// jsr 插件  读取字段的限制
 		list.add(new ValidationPlugin());
 
-		// swagger 插件 读取 swagger注解上的信息
 		list.add(new SwaggerPlugin());
 	}
 

@@ -31,7 +31,6 @@ public class ValidationPlugin implements IJavaDocPlugin {
 		for (ClassDoc classDoc : javaDocVO.getClassDocs().values()) {
 
 			for (TypeDoc field : classDoc.getFields().values()) {
-				//字段上的注解
 				limits = readValidAnnoaation(field);
 				if (limits != null) {
 					field.addLimits(limits);
@@ -40,7 +39,6 @@ public class ValidationPlugin implements IJavaDocPlugin {
 
 			for (MethodDoc method : classDoc.getMethods().values()) {
 				if (method.getReturnType() != null) {
-					//方法上的注解
 					limits = readValidAnnoaation(method);
 					if (limits != null) {
 						method.getReturnType().addLimits(limits);
@@ -74,7 +72,6 @@ public class ValidationPlugin implements IJavaDocPlugin {
 							set.add(parse(validAnnotation, annotation));
 						}
 					} catch (IllegalArgumentException e) {
-						//未定义在 ValidAnnotation 枚举中
 						set.add(annotation.getText());
 					}
 				}
@@ -97,7 +94,6 @@ public class ValidationPlugin implements IJavaDocPlugin {
 							set.add(parse(validAnnotation, annotation));
 						}
 					} catch (IllegalArgumentException e) {
-						//未定义在 ValidAnnotation 枚举中
 						set.add(annotation.getText());
 					}
 				}
@@ -138,8 +134,6 @@ public class ValidationPlugin implements IJavaDocPlugin {
 	}
 
 	enum ValidAnnotation {
-		// javax.validation.constraints. 下的注解
-
 		Null("元素必须为 null"),
 		NotNull("元素必须不为 null"),
 		NotBlank("字符串不能为空"),
@@ -157,7 +151,6 @@ public class ValidationPlugin implements IJavaDocPlugin {
 		Email("元素必须是电子邮箱地址", "regexp"),
 		NotEmpty("字符串的必须非空"),
 
-		// org.hibernate.validator.constraints. 下的注解
 		Length("字符串的长度必须在指定的范围内", "min", "max"),
 		Range("元素必须在合适的范围内", "min", "max"),
 		URL("元素必须是网址", "protocol", "host", "port", "regexp");

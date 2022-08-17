@@ -92,7 +92,6 @@ public class MethodDoc extends AbsDoc {
 					text.append(",");
 				}
 				text.append(this.params.get(i).getClassName());
-				//维度  如果是数组的话
 				for (int j = 1; j < this.params.get(i).getDimension(); j++) {
 					text.append("[]");
 				}

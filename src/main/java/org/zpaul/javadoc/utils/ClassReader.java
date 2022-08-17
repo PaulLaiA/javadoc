@@ -36,34 +36,26 @@ public class ClassReader {
 	public ClassDoc read(com.sun.javadoc.ClassDoc classDoc) {
 		ClassDoc classDocVO = env.get(classDoc.qualifiedTypeName());
 		if (classDocVO != null) {
-			//已解析
 			return classDocVO;
 		}
 		classDocVO = new ClassDoc();
 		classDocVO.setClassName(classDoc.qualifiedTypeName());
-		//先将引用添加进去 占个位置
 		env.add(classDocVO);
 
 		try {
 
 			tryExtendFromParent(classDocVO, classDoc);
 
-			//类的修饰数值
 			classDocVO.setModifierSpecifier(classDoc.modifierSpecifier());
 
-			//实现的接口
 			classDocVO.setInterfaceTypes(InterfaceTypeUtil.readInterfaceTypes(classDoc));
 
-			//类注释
 			classDocVO.setComment(CommentUtil.read(classDoc.inlineTags()));
 
-			//tag注释   @author @date  等
 			classDocVO.setTags(CommentUtil.readTagWithMap(classDoc.tags()));
 
-			//读取class上的注解
 			classDocVO.setAnnotations(AnnotationUtil.readAnnotationMap(classDoc));
 
-			//类的泛型
 			if (classDoc.typeParameters() != null && classDoc.typeParameters().length > 0) {
 				List<TypeVariableDoc> typeVariableVOList = new ArrayList(classDoc.typeParameters().length);
 				for (com.sun.javadoc.TypeVariable typeVariable : classDoc.typeParameters()) {
@@ -72,19 +64,15 @@ public class ClassReader {
 				classDocVO.setTypeParameters(typeVariableVOList);
 			}
 
-			//类的字段
 			classDocVO.setFields(readFields(classDoc));
 
-			//类的方法
 			classDocVO.setMethods(readMethods(classDoc));
 
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//读取内部类
 		for (com.sun.javadoc.ClassDoc innerClassDoc : classDoc.innerClasses(true)) {
-			//暂时只读取public的
 			read(innerClassDoc);
 		}
 		return classDocVO;
@@ -146,9 +134,7 @@ public class ClassReader {
 		methodDocVO.setAnnotations(AnnotationUtil.readAnnotationMap(methodDoc));
 		methodDocVO.setTags(CommentUtil.readTagWithMap(methodDoc.tags()));
 
-		//读取参数
 		List<TypeDoc> params = new ArrayList<>(methodDoc.parameters().length);
-		//读取参数注释
 		Map<String, Tag[]> paramCommentMap = new HashMap(16);
 		for (com.sun.javadoc.ParamTag paramTag : methodDoc.paramTags()) {
 			paramCommentMap.put(paramTag.parameterName(), paramTag.inlineTags());
@@ -158,10 +144,8 @@ public class ClassReader {
 		}
 		methodDocVO.setParams(params);
 
-		//解析返回类型
 		methodDocVO.setReturnType(readType(methodDoc.returnType(), "", methodDoc.tags("return"), null, null, 0));
 
-		//方法的显式抛出异常
 		methodDocVO.setThrowExpections(CoreUtil.readThrowExpections(methodDoc));
 
 		return methodDocVO;

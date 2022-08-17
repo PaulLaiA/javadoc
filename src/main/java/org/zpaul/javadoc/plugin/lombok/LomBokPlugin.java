@@ -44,15 +44,11 @@ public class LomBokPlugin implements IJavaDocPlugin {
 		for (TypeDoc field : classDoc.getFields().values()) {
 			if (!Modifier.isTransient(field.getModifierSpecifier())
 			    && !Modifier.isStatic(field.getModifierSpecifier())) {
-				//非transient && 非static
-
 				if (addGet || field.hasAnnotation(LOMBOK_GETTER)) {
 					this.addGetMethod(classDoc, field);
 				}
 
 				if (!Modifier.isFinal(field.getModifierSpecifier())) {
-					//非 final
-
 					if (addSet || field.hasAnnotation(LOMBOK_SETTER)) {
 						this.addSetMethod(classDoc, field);
 					}
@@ -73,7 +69,6 @@ public class LomBokPlugin implements IJavaDocPlugin {
 	}
 
 	private void addSetMethod(ClassDoc classDoc, TypeDoc field) {
-		//判断 不是 final 字段
 		if (!Modifier.isFinal(field.getModifierSpecifier())) {
 			MethodDoc methodDoc = new MethodDoc();
 			methodDoc.setMethodName("set" + CoreUtil.upperCase(field.getName()));

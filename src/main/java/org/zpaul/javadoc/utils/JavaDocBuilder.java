@@ -34,7 +34,6 @@ public class JavaDocBuilder {
 		javaDoc.setClassDocs(env.classDocs);
 		javaDoc.setIncludeClassDocs(env.includes);
 
-		//运行插件
 		JavaDocPluginManager.handle(javaDoc);
 
 		return javaDoc;

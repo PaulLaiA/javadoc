@@ -34,7 +34,6 @@ public class AnnotationUtil {
 			for (com.sun.javadoc.AnnotationDesc.ElementValuePair elementValuePair : annotation.elementValues()) {
 				data.put(elementValuePair.element().name(), parseObjectToStringArray(elementValuePair.value().value()));
 			}
-			//设置默认值
 			for (AnnotationTypeElementDoc element : annotation.annotationType().elements()) {
 				if (!data.containsKey(element.name()) && element.defaultValue() != null && element.defaultValue()
 				                                                                                  .value() != null) {

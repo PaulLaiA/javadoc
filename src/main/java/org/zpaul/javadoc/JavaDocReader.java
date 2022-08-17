@@ -51,7 +51,6 @@ public class JavaDocReader {
 		for (File sourceDir : sourceDirs) {
 			if (sourceDir.exists()) {
 				if (sourceDir.isDirectory()) {
-					//如果是文件夹 读取文件夹下的所有 .java 文件
 					list.addAll(FileUtil.listFiles(sourceDir, file ->
 							file.isDirectory() || file.getName().toLowerCase().endsWith(".java"), false));
 				} else if (sourceDir.getName().toLowerCase().endsWith(".java")) {

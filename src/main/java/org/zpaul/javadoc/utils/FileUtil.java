@@ -53,7 +53,7 @@ public class FileUtil {
 		try {
 			out = new FileOutputStream(file, false);
 			out.write(content.getBytes(StandardCharsets.UTF_8));
-			out.flush(); // 把缓存区内容压入文件
+			out.flush();
 
 		} catch (IOException e) {
 			e.printStackTrace();
