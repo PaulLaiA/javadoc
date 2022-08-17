@@ -3,13 +3,6 @@ package org.zpaul.javadoc.plugin.swagger;
 import org.zpaul.javadoc.bean.*;
 import org.zpaul.javadoc.plugin.IJavaDocPlugin;
 
-/**
- * Created with IntelliJ IDEA.
- * Description:
- *
- * @author genx
- * @date 2020/3/10 21:51
- */
 public class SwaggerPlugin implements IJavaDocPlugin {
 
 

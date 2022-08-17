@@ -2,23 +2,12 @@ package org.zpaul.javadoc.bean;
 
 import java.io.Serializable;
 
-/**
- * Created with IntelliJ IDEA.
- * Description:
- *
- * @author genx
- * @date 2020/3/7 17:54
- */
 public class TypeParameterizedDoc implements Serializable {
 
 	private String text;
 
 	private String className;
 
-	/**
-	 * 维度
-	 * 例如 方法返回 String[]
-	 */
 	private int dimension = 1;
 
 

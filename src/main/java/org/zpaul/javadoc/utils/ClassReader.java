@@ -10,13 +10,6 @@ import org.zpaul.javadoc.bean.TypeVariableDoc;
 import java.util.*;
 
 
-/**
- * Created with IntelliJ IDEA.
- * Description:
- *
- * @author genx
- * @date 2020/2/15 14:43
- */
 public class ClassReader {
 
 	private final JavaDocBuilder.JavaDocEnv env;
@@ -97,13 +90,6 @@ public class ClassReader {
 		return typeVariableVO;
 	}
 
-	/**
-	 * 读取类的变量
-	 *
-	 * @param classDoc
-	 *
-	 * @return
-	 */
 	private Map<String, TypeDoc> readFields(com.sun.javadoc.ClassDoc classDoc) {
 		com.sun.javadoc.FieldDoc[] fieldDocs = classDoc.fields(false);
 		Map<String, TypeDoc> fields = new TreeMap();

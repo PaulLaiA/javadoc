@@ -7,22 +7,8 @@ import org.zpaul.javadoc.plugin.IJavaDocPlugin;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Created with IntelliJ IDEA.
- * Description:
- *
- * @author genx
- * @date 2020/3/7 23:13
- */
 public class ValidationPlugin implements IJavaDocPlugin {
-	/**
-	 * Bean Validation
-	 * jakarta.validation-api
-	 */
 	private final String JAVAX_VALIDATION = "javax.validation.constraints.";
-	/**
-	 * Hibernate Validator 是 Bean Validation 的参考实现 . Hibernate Validator 提供了 JSR 303 规范中所有内置 constraint 的实现，除此之外还有一些附加的 constraint。
-	 */
 	private final String ORG_HIBERNATE_VALIDATOR = "org.hibernate.validator.constraints.";
 
 	@Override

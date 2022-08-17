@@ -6,36 +6,17 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created with IntelliJ IDEA.
- * Description:
- *
- * @author genx
- * @date 2020/9/4 21:36
- */
 public class MethodDoc extends AbsDoc {
 
-	/**
-	 * 方法名
-	 */
 	private String methodName;
 
 
-	/**
-	 * 参数
-	 */
 	private List<TypeDoc> params;
 
 
-	/**
-	 * 返回类型
-	 */
 	private TypeDoc returnType;
 
 
-	/**
-	 * 抛出的异常
-	 */
 	private Map<String, String> throwExpections;
 
 

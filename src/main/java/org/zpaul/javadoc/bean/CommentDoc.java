@@ -2,21 +2,10 @@ package org.zpaul.javadoc.bean;
 
 import java.io.Serializable;
 
-/**
- * Created with IntelliJ IDEA.
- * Description:
- *
- * @author genx
- * @date 2020/9/5 11:10
- */
 public class CommentDoc implements Serializable {
 
 	public static final String TYPE_TEXT = "Text";
 
-	/**
-	 * 文本 Text
-	 * 其他比如 @linkplain, @link
-	 */
 	private String type;
 
 	private String text;

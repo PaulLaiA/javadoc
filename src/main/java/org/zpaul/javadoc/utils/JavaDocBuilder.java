@@ -7,13 +7,6 @@ import org.zpaul.javadoc.plugin.JavaDocPluginManager;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created with IntelliJ IDEA.
- * Description:
- *
- * @author genx
- * @date 2020/3/6 22:57
- */
 public class JavaDocBuilder {
 
 	private final JavaDocEnv env = new JavaDocEnv();
@@ -43,14 +36,8 @@ public class JavaDocBuilder {
 	class JavaDocEnv {
 		private final Map<String, com.sun.javadoc.ClassDoc> classDocMap = new HashMap(2048);
 
-		/**
-		 * 源码的类
-		 */
 		private final Map<String, ClassDoc> classDocs = new HashMap(2048);
 
-		/**
-		 * 外部引用
-		 */
 		private final Map<String, ClassDoc> includes = new HashMap(2048);
 
 		public Map<String, com.sun.javadoc.ClassDoc> getClassDocMap() {

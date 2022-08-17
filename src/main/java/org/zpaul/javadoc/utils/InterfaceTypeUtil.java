@@ -4,13 +4,6 @@ import com.sun.javadoc.ClassDoc;
 
 import java.util.*;
 
-/**
- * Created with IntelliJ IDEA.
- * Description:
- *
- * @author genx
- * @date 2020/9/5 22:43
- */
 public class InterfaceTypeUtil {
 
 	public static HashMap<String, List<String>> readInterfaceTypes(ClassDoc classDoc) {

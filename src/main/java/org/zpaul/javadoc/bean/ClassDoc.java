@@ -5,13 +5,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created with IntelliJ IDEA.
- * Description:
- *
- * @author genx
- * @date 2020/9/4 21:31
- */
 public class ClassDoc extends AbsDoc {
 
 	private final Map<String, TypeDoc> fields = new LinkedHashMap();

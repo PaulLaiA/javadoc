@@ -6,13 +6,6 @@ import org.zpaul.javadoc.bean.CommentDoc;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created with IntelliJ IDEA.
- * Description:
- *
- * @author genx
- * @date 2020/9/5 13:48
- */
 public class CommentUtil {
 
 	public static CommentDoc read(Tag[] tags) {

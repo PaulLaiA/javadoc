@@ -4,23 +4,10 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created with IntelliJ IDEA.
- * Description:
- *
- * @author genx
- * @date 2020/9/4 22:23
- */
 public class JavaDoc implements Serializable {
 
-	/**
-	 * .java对应的类
-	 */
 	private Map<String, ClassDoc> classDocs = new HashMap(2048);
 
-	/**
-	 * 其他引用类
-	 */
 	private Map<String, ClassDoc> includeClassDocs = new HashMap(2048);
 
 

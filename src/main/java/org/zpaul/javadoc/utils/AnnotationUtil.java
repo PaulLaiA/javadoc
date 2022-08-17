@@ -7,13 +7,6 @@ import org.zpaul.javadoc.bean.AnnotationDesc;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created with IntelliJ IDEA.
- * Description:
- *
- * @author: genx
- * @date: 2019/3/12 10:01
- */
 public class AnnotationUtil {
 
 	public static Map<String, AnnotationDesc> readAnnotationMap(ProgramElementDoc doc) {

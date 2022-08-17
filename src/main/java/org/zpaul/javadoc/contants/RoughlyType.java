@@ -3,17 +3,7 @@ package org.zpaul.javadoc.contants;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created with IntelliJ IDEA.
- * Description:
- *
- * @author genx
- * @date 2020/3/1 22:24
- */
 public enum RoughlyType {
-	/**
-	 * 一般不会出现
-	 */
 	Unknow,
 	Array,
 	Map,
@@ -55,13 +45,6 @@ public enum RoughlyType {
 
 	}
 
-	/**
-	 * 判断基础类型及其包装类
-	 *
-	 * @param className
-	 *
-	 * @return
-	 */
 	public static RoughlyType assertBaseType(String className) {
 		return BASE_TYPE_MAP.get(className);
 	}

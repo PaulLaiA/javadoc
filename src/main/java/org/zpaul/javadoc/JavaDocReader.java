@@ -13,13 +13,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * Description:
- *
- * @author: genx
- * @date: 2019/3/9 16:02
- */
 public class JavaDocReader {
 
 	private static RootDoc root = null;

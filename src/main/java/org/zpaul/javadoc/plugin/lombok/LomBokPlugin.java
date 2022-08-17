@@ -11,15 +11,6 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * Description:
- * LomBok 插件 追加上 get、set 方法
- * 暂时不考虑 toString、hash、equal
- *
- * @author genx
- * @date 2020/3/6 22:21
- */
 public class LomBokPlugin implements IJavaDocPlugin {
 
 	private final int PUBLIC_MODIFIER = 1;

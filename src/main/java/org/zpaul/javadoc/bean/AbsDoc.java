@@ -6,37 +6,16 @@ import java.io.Serializable;
 import java.util.Map;
 
 public abstract class AbsDoc implements Serializable {
-
-	/**
-	 * 类名
-	 */
 	protected String className;
 
-	/**
-	 * 类名(带泛型)
-	 */
 	protected String classInfo;
 
-	/**
-	 * 修饰符数值
-	 */
 	protected int modifierSpecifier;
 
-	/**
-	 * 注解
-	 * key 注解的类名
-	 */
 	protected Map<String, AnnotationDesc> annotations;
 
-	/**
-	 * 注释
-	 */
 	protected CommentDoc comment;
 
-	/**
-	 * 注释标签
-	 * 例如 @ param
-	 */
 	protected Map<String, CommentDoc> tags;
 
 	public String getClassName() {
