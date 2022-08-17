@@ -60,9 +60,6 @@ public class JavaDocReader {
 		for (File file : list) {
 			commandList.add(file.getAbsolutePath());
 		}
-		System.out.println("#### javadoc command start ####");
-		System.out.println(StringUtils.join(commandList, System.lineSeparator()));
-		System.out.println("#### javadoc command end ####");
 		com.sun.tools.javadoc.Main.execute(commandList.toArray(new String[commandList.size()]));
 	}
 

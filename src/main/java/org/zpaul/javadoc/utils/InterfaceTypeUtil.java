@@ -30,7 +30,6 @@ public class InterfaceTypeUtil {
 					                          .forEach(a -> interfaceTypes.get(type.qualifiedTypeName())
 					                                                      .add(a.qualifiedTypeName())));
 				} catch (Exception e) {
-					System.out.println(e.getMessage());
 				}
 			readInterfaceTypes(interfaceTypes, type, processed);
 		}
