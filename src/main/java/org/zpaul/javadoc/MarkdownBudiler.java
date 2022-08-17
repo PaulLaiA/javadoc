@@ -1,6 +1,5 @@
-package org.zpaul;
+package org.zpaul.javadoc;
 
-import org.zpaul.javadoc.JavaDocReader;
 import org.zpaul.javadoc.bean.ClassDoc;
 import org.zpaul.javadoc.bean.JavaDoc;
 
