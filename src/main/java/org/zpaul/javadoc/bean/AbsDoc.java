@@ -1,11 +1,13 @@
 package org.zpaul.javadoc.bean;
 
-import org.apache.commons.lang3.StringUtils;
+
+import cn.hutool.core.clone.CloneSupport;
+import cn.hutool.core.util.StrUtil;
 
 import java.io.Serializable;
 import java.util.Map;
 
-public abstract class AbsDoc implements Serializable {
+public abstract class AbsDoc extends CloneSupport<AbsDoc> implements Serializable {
 	protected String className;
 
 	protected String classInfo;
@@ -67,18 +69,18 @@ public abstract class AbsDoc implements Serializable {
 	}
 
 	public boolean hasAnnotation(String annotationClassName) {
-		return StringUtils.isNotBlank(annotationClassName) && annotations != null && annotations.containsKey(annotationClassName);
+		return StrUtil.isNotBlank(annotationClassName) && annotations != null && annotations.containsKey(annotationClassName);
 	}
 
 	public AnnotationDesc getAnnotation(String annotationClassName) {
-		if (StringUtils.isNotBlank(annotationClassName) && this.annotations != null) {
+		if (StrUtil.isNotBlank(annotationClassName) && this.annotations != null) {
 			return this.annotations.get(annotationClassName);
 		}
 		return null;
 	}
 
 	public String getAnnotationValue(String annotationClassName, String key) {
-		if (StringUtils.isNotBlank(annotationClassName) && this.annotations != null) {
+		if (StrUtil.isNotBlank(annotationClassName) && this.annotations != null) {
 			AnnotationDesc annotationDocVO = this.annotations.get(annotationClassName);
 			return annotationDocVO.getValue(key);
 		}
@@ -86,7 +88,7 @@ public abstract class AbsDoc implements Serializable {
 	}
 
 	public String[] getAnnotationValues(String annotationClassName, String key) {
-		if (StringUtils.isNotBlank(annotationClassName) && this.annotations != null) {
+		if (StrUtil.isNotBlank(annotationClassName) && this.annotations != null) {
 			AnnotationDesc annotationDocVO = this.annotations.get(annotationClassName);
 			return annotationDocVO.getValues(key);
 		}
@@ -94,7 +96,7 @@ public abstract class AbsDoc implements Serializable {
 	}
 
 	public CommentDoc getTag(String tagKey) {
-		if (StringUtils.isBlank(tagKey) || this.tags == null) {
+		if (StrUtil.isBlank(tagKey) || this.tags == null) {
 			return null;
 		}
 		if (tagKey.charAt(0) != '@') {

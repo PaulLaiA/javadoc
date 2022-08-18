@@ -3,7 +3,6 @@ package org.zpaul.javadoc;
 import com.sun.javadoc.ClassDoc;
 import com.sun.javadoc.LanguageVersion;
 import com.sun.javadoc.RootDoc;
-import org.apache.commons.lang3.StringUtils;
 import org.zpaul.javadoc.bean.JavaDoc;
 import org.zpaul.javadoc.utils.FileUtil;
 import org.zpaul.javadoc.utils.JavaDocBuilder;
@@ -38,7 +37,7 @@ public class JavaDocReader {
 		commandList.add("-encoding");
 		commandList.add("utf-8");
 		commandList.add("-classpath");
-		commandList.add(StringUtils.join(compilePaths, ";"));
+		commandList.add(String.join(";", compilePaths));
 
 		List<File> list = new ArrayList(1024);
 		for (File sourceDir : sourceDirs) {

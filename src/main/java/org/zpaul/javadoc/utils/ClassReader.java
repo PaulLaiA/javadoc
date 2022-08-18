@@ -59,7 +59,7 @@ public class ClassReader {
 
 			classDocVO.setFields(readFields(classDoc));
 
-			classDocVO.setMethods(readMethods(classDoc));
+//			classDocVO.setMethods(readMethods(classDoc));
 
 
 		} catch (Exception e) {
@@ -78,7 +78,7 @@ public class ClassReader {
 
 			classDocVO.setFields(parentVO.getFields());
 
-			classDocVO.setMethods(parentVO.getMethods());
+//			classDocVO.setMethods(parentVO.getMethods());
 		}
 	}
 

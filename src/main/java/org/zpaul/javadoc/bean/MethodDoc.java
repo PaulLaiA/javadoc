@@ -1,7 +1,7 @@
 package org.zpaul.javadoc.bean;
 
 
-import org.apache.commons.lang3.StringUtils;
+import cn.hutool.core.util.StrUtil;
 
 import java.util.List;
 import java.util.Map;
@@ -84,7 +84,7 @@ public class MethodDoc extends AbsDoc {
 
 	@Override
 	public AnnotationDesc getAnnotation(String annotationClassName) {
-		if (StringUtils.isNotBlank(annotationClassName) && this.annotations != null) {
+		if (StrUtil.isNotBlank(annotationClassName) && this.annotations != null) {
 			return this.annotations.get(annotationClassName);
 		}
 		return null;
@@ -92,12 +92,12 @@ public class MethodDoc extends AbsDoc {
 
 	@Override
 	public boolean hasAnnotation(String annotationClassName) {
-		return StringUtils.isNotBlank(annotationClassName) && annotations != null && annotations.containsKey(annotationClassName);
+		return StrUtil.isNotBlank(annotationClassName) && annotations != null && annotations.containsKey(annotationClassName);
 	}
 
 	@Override
 	public String getAnnotationValue(String annotationClassName, String key) {
-		if (StringUtils.isNotBlank(annotationClassName) && this.annotations != null) {
+		if (StrUtil.isNotBlank(annotationClassName) && this.annotations != null) {
 			AnnotationDesc annotationDocVO = this.annotations.get(annotationClassName);
 			return annotationDocVO.getValue(key);
 		}
@@ -106,7 +106,7 @@ public class MethodDoc extends AbsDoc {
 
 	@Override
 	public String[] getAnnotationValues(String annotationClassName, String key) {
-		if (StringUtils.isNotBlank(annotationClassName) && this.annotations != null) {
+		if (StrUtil.isNotBlank(annotationClassName) && this.annotations != null) {
 			AnnotationDesc annotationDocVO = this.annotations.get(annotationClassName);
 			return annotationDocVO.getValues(key);
 		}

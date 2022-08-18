@@ -1,6 +1,5 @@
 package org.zpaul.javadoc.plugin.jsr;
 
-import org.apache.commons.lang3.StringUtils;
 import org.zpaul.javadoc.bean.*;
 import org.zpaul.javadoc.plugin.IJavaDocPlugin;
 
@@ -23,23 +22,23 @@ public class ValidationPlugin implements IJavaDocPlugin {
 				}
 			}
 
-			for (MethodDoc method : classDoc.getMethods().values()) {
-				if (method.getReturnType() != null) {
-					limits = readValidAnnoaation(method);
-					if (limits != null) {
-						method.getReturnType().addLimits(limits);
-					}
-				}
-
-				if (method.getParams() != null) {
-					for (TypeDoc param : method.getParams()) {
-						limits = readValidAnnoaation(param);
-						if (limits != null) {
-							param.addLimits(limits);
-						}
-					}
-				}
-			}
+//			for (MethodDoc method : classDoc.getMethods().values()) {
+//				if (method.getReturnType() != null) {
+//					limits = readValidAnnoaation(method);
+//					if (limits != null) {
+//						method.getReturnType().addLimits(limits);
+//					}
+//				}
+//
+//				if (method.getParams() != null) {
+//					for (TypeDoc param : method.getParams()) {
+//						limits = readValidAnnoaation(param);
+//						if (limits != null) {
+//							param.addLimits(limits);
+//						}
+//					}
+//				}
+//			}
 
 		}
 
@@ -107,7 +106,7 @@ public class ValidationPlugin implements IJavaDocPlugin {
 					if (values.length > 1) {
 						sb.append("[");
 					}
-					sb.append(StringUtils.join(values, ","));
+					sb.append(String.join(",", values));
 					if (values.length > 1) {
 						sb.append("]");
 					}

@@ -37,15 +37,15 @@ public class SwaggerPlugin implements IJavaDocPlugin {
 			}
 		}
 
-		for (MethodDoc method : classDoc.getMethods().values()) {
-			annotationDocVO = method.getAnnotation(API_OPERATION);
-			if (annotationDocVO != null) {
-				String comment = annotationDocVO.getValue("value");
-				if (method.getComment() == null) {
-					method.setComment(CommentDoc.of(comment));
-				}
-			}
-		}
+//		for (MethodDoc method : classDoc.getMethods().values()) {
+//			annotationDocVO = method.getAnnotation(API_OPERATION);
+//			if (annotationDocVO != null) {
+//				String comment = annotationDocVO.getValue("value");
+//				if (method.getComment() == null) {
+//					method.setComment(CommentDoc.of(comment));
+//				}
+//			}
+//		}
 
 	}
 }

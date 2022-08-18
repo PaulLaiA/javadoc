@@ -1,6 +1,7 @@
 package org.zpaul.javadoc.bean;
 
-import org.apache.commons.lang3.StringUtils;
+
+import cn.hutool.core.util.StrUtil;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -46,7 +47,7 @@ public class AnnotationDesc implements Serializable {
 	}
 
 	public String[] getValues(String key) {
-		if (this.data != null && StringUtils.isNotBlank(key)) {
+		if (this.data != null && StrUtil.isNotBlank(key)) {
 			String[] values = this.data.get(key);
 			return values;
 		}

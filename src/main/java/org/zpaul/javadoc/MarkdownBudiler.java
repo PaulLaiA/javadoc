@@ -1,10 +1,17 @@
 package org.zpaul.javadoc;
 
+import cn.hutool.core.io.FileUtil;
+import cn.hutool.json.JSONUtil;
 import org.zpaul.javadoc.bean.ClassDoc;
+import org.zpaul.javadoc.bean.CommentDoc;
 import org.zpaul.javadoc.bean.JavaDoc;
+import org.zpaul.javadoc.bean.r.ClassNode;
+import org.zpaul.javadoc.bean.r.MarkdownNode;
 
 import java.io.File;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class MarkdownBudiler {
 	private final static String classes = "WEB-INF\\classes";
@@ -34,4 +41,36 @@ public class MarkdownBudiler {
 		JavaDoc javaDoc = JavaDocReader.read(Collections.singletonList(sourceCodePath), compilePathList);
 		return javaDoc.getClassDocs();
 	}
+
+	public static void genClassDocMd(Map<String, ClassDoc> classDocMap, String iName) {
+		final List<String> t_md = FileUtil.readLines(
+				Objects.requireNonNull(MarkdownBudiler.class.getResource("/template.md")),
+				StandardCharsets.UTF_8);
+		final List<String> t_md_data = FileUtil.readLines(
+				Objects.requireNonNull(MarkdownBudiler.class.getResource("/template.md")),
+				StandardCharsets.UTF_8);
+		final List<List<String>> collect = classDocMap
+				.values()
+				.parallelStream()
+				.filter(k -> k.getInterfaceTypes().containsKey(iName))
+				.collect(Collectors.toList())
+				.stream()
+				.map(classDoc -> {
+					MarkdownNode mdn = new MarkdownNode();
+					mdn.setName(classDoc.getClassName());
+					mdn.setDesc(Optional.ofNullable(classDoc.getComment()).map(CommentDoc::getText).orElse(""));
+					mdn.setNodes(classDoc.getInterfaceTypes().values().stream()
+					                     .flatMap(Collection::stream)
+					                     .map(classDocMap::get)
+					                     .map(k -> ClassNode.of(classDocMap, k, 1))
+					                     .collect(Collectors.toList()));
+					return mdn;
+				}).map(MarkdownNode::printMarkdown)
+				.collect(Collectors.toList());
+
+		collect.stream().map(JSONUtil::toJsonPrettyStr).forEach(System.out::println);
+
+	}
+
+
 }

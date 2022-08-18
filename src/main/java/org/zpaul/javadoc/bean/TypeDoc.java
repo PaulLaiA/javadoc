@@ -1,13 +1,14 @@
 package org.zpaul.javadoc.bean;
 
-import com.alibaba.fastjson.JSONObject;
+
+import lombok.Data;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-
+@Data
 public class TypeDoc extends AbsDoc {
 
 
@@ -28,38 +29,6 @@ public class TypeDoc extends AbsDoc {
 		return typeDoc;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getDimension() {
-		return dimension;
-	}
-
-	public void setDimension(int dimension) {
-		this.dimension = dimension;
-	}
-
-	public TypeParameterizedDoc[] getParameters() {
-		return parameters;
-	}
-
-	public void setParameters(TypeParameterizedDoc[] parameters) {
-		this.parameters = parameters;
-	}
-
-	public Set<String> getLimits() {
-		return limits;
-	}
-
-	public void setLimits(Set<String> limits) {
-		this.limits = limits;
-	}
-
 	public void addLimit(String limit) {
 		addLimits(Collections.singletonList(limit));
 	}
@@ -71,8 +40,26 @@ public class TypeDoc extends AbsDoc {
 		this.limits.addAll(limits);
 	}
 
-	public TypeDoc copy() {
-		String str = JSONObject.toJSONString(this);
-		return JSONObject.parseObject(str, TypeDoc.class);
-	}
+//	@Override
+//	public String toString() {
+//		String classInfo = "";
+//		if (this.getClassInfo().equals(this.getClassName())) {
+//			classInfo = getStr(this.getClassInfo());
+//		} else {
+//			String replace = this.classInfo.replace(this.getClassName(), "");
+//			replace = replace.substring(1, replace.length() - 1);
+//			replace = getStr(replace);
+//			classInfo = getStr(this.getClassName()) + "<" + replace + ">";
+//		}
+//
+//		return String.format("|%s|%s|%s|%s|", this.name, this.getComment().getText(), classInfo, "");
+//	}
+
+//	private String getStr(String str) {
+//		try {
+//			str = str.substring(str.lastIndexOf(".") + 1);
+//		} catch (Exception ignored) {
+//		}
+//		return str;
+//	}
 }

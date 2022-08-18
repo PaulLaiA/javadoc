@@ -8,7 +8,6 @@ import java.util.Map;
 public class ClassDoc extends AbsDoc {
 
 	private final Map<String, TypeDoc> fields = new LinkedHashMap();
-	private final Map<String, MethodDoc> methods = new LinkedHashMap();
 	private List<TypeVariableDoc> typeParameters;
 	private HashMap<String, List<String>> interfaceTypes;
 
@@ -34,19 +33,6 @@ public class ClassDoc extends AbsDoc {
 		this.fields.put(name, field);
 	}
 
-	public Map<String, MethodDoc> getMethods() {
-		return methods;
-	}
-
-	public void setMethods(Map<String, MethodDoc> methods) {
-		if (methods != null) {
-			this.methods.putAll(methods);
-		}
-	}
-
-	public void putMethod(String name, MethodDoc method) {
-		this.methods.put(name, method);
-	}
 
 	public HashMap<String, List<String>> getInterfaceTypes() {
 		return interfaceTypes;
@@ -55,4 +41,5 @@ public class ClassDoc extends AbsDoc {
 	public void setInterfaceTypes(HashMap<String, List<String>> interfaceTypes) {
 		this.interfaceTypes = interfaceTypes;
 	}
+
 }

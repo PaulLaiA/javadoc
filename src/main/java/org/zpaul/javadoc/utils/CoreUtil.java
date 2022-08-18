@@ -1,6 +1,6 @@
 package org.zpaul.javadoc.utils;
 
-import org.apache.commons.lang3.StringUtils;
+import cn.hutool.core.util.StrUtil;
 import org.zpaul.javadoc.bean.ClassDoc;
 import org.zpaul.javadoc.bean.TypeParameterizedDoc;
 
@@ -54,13 +54,13 @@ public class CoreUtil {
 		return false;
 	}
 
-	public static boolean isDate(ClassDoc classDoc) {
-		if (classDoc != null) {
-			return classDoc.getMethods().containsKey("before(java.util.Date)") && classDoc.getMethods()
-			                                                                              .containsKey("after(java.util.Date)");
-		}
-		return false;
-	}
+//	public static boolean isDate(ClassDoc classDoc) {
+//		if (classDoc != null) {
+//			return classDoc.getMethods().containsKey("before(java.util.Date)") && classDoc.getMethods()
+//			                                                                              .containsKey("after(java.util.Date)");
+//		}
+//		return false;
+//	}
 
 
 	public static TypeParameterizedDoc[] readParameteres(com.sun.javadoc.Type type) {
@@ -100,7 +100,7 @@ public class CoreUtil {
 
 
 	public static String upperCase(String str) {
-		if (StringUtils.isNotBlank(str)) {
+		if (StrUtil.isNotBlank(str)) {
 			char[] ch = str.toCharArray();
 			if (ch[0] >= 'a' && ch[0] <= 'z') {
 				ch[0] = (char) (ch[0] - 32);
@@ -111,7 +111,7 @@ public class CoreUtil {
 	}
 
 	public static String lowCase(String str) {
-		if (StringUtils.isNotBlank(str)) {
+		if (StrUtil.isNotBlank(str)) {
 			char[] ch = str.toCharArray();
 			if (ch[0] >= 'A' && ch[0] <= 'Z') {
 				ch[0] = (char) (ch[0] + 32);
