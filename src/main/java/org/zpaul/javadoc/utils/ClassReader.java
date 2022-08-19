@@ -42,6 +42,7 @@ public class ClassReader {
 			classDocVO.setModifierSpecifier(classDoc.modifierSpecifier());
 
 			classDocVO.setInterfaceTypes(InterfaceTypeUtil.readInterfaceTypes(classDoc));
+			classDocVO.setExtendTypes(ExtendTypeUtil.readExtendTypes(classDoc));
 
 			classDocVO.setComment(CommentUtil.read(classDoc.inlineTags()));
 

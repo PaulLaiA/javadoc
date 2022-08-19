@@ -11,6 +11,8 @@ public class ClassDoc extends AbsDoc {
 	private List<TypeVariableDoc> typeParameters;
 	private HashMap<String, List<String>> interfaceTypes;
 
+	private HashMap<String, List<String>> extendTypes = new HashMap<>();
+
 	public List<TypeVariableDoc> getTypeParameters() {
 		return typeParameters;
 	}
@@ -42,4 +44,11 @@ public class ClassDoc extends AbsDoc {
 		this.interfaceTypes = interfaceTypes;
 	}
 
+	public HashMap<String, List<String>> getExtendTypes() {
+		return extendTypes;
+	}
+
+	public void setExtendTypes(HashMap<String, List<String>> extendTypes) {
+		this.extendTypes = extendTypes;
+	}
 }

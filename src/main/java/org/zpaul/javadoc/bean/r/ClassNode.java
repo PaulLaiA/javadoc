@@ -1,5 +1,6 @@
 package org.zpaul.javadoc.bean.r;
 
+import cn.hutool.core.util.ObjectUtil;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.zpaul.javadoc.bean.ClassDoc;
@@ -8,6 +9,7 @@ import org.zpaul.javadoc.utils.ClassNodeUtil;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -31,8 +33,7 @@ public class ClassNode {
 	}
 
 	public static ClassNode of(Map<String, ClassDoc> classDocMap, ClassDoc doc, int level) {
-		final ClassNode classNode = new ClassNode(level, doc.getClassName(), Optional
-				.ofNullable(doc.getComment().getText()).orElse(""));
+		final ClassNode classNode = new ClassNode(level, doc.getClassName(), ClassNodeUtil.getDesc(doc, false));
 		classNode.setFields(ClassNodeUtil.getFieldNodes(doc));
 		classNode.setLink(ClassNodeUtil.getClassNodes(classDocMap, doc, level));
 		return classNode;

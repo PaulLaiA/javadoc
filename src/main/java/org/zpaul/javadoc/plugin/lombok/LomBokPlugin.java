@@ -2,7 +2,14 @@ package org.zpaul.javadoc.plugin.lombok;
 
 import org.zpaul.javadoc.bean.ClassDoc;
 import org.zpaul.javadoc.bean.JavaDoc;
+import org.zpaul.javadoc.bean.MethodDoc;
+import org.zpaul.javadoc.bean.TypeDoc;
 import org.zpaul.javadoc.plugin.IJavaDocPlugin;
+import org.zpaul.javadoc.utils.CoreUtil;
+
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LomBokPlugin implements IJavaDocPlugin {
 

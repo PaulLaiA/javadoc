@@ -3,8 +3,10 @@ package org.zpaul.javadoc.plugin.jsr;
 import org.zpaul.javadoc.bean.*;
 import org.zpaul.javadoc.plugin.IJavaDocPlugin;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class ValidationPlugin implements IJavaDocPlugin {
 	private final String JAVAX_VALIDATION = "javax.validation.constraints.";

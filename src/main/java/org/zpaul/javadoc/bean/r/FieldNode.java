@@ -31,7 +31,7 @@ public class FieldNode {
 			fieldNode.setTypeDetail(doc.getClassInfo().substring(doc.getClassInfo().lastIndexOf(".") + 1));
 		else
 			fieldNode.setTypeDetail("");
-		fieldNode.setDesc(ClassNodeUtil.getDesc(doc.getComment().getText()));
+		fieldNode.setDesc(ClassNodeUtil.getDesc(doc, true));
 		return fieldNode;
 	}
 }

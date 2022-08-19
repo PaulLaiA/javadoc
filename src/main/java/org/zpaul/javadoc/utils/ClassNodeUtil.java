@@ -2,9 +2,7 @@ package org.zpaul.javadoc.utils;
 
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.ReUtil;
-import org.zpaul.javadoc.bean.ClassDoc;
-import org.zpaul.javadoc.bean.TypeDoc;
-import org.zpaul.javadoc.bean.TypeParameterizedDoc;
+import org.zpaul.javadoc.bean.*;
 import org.zpaul.javadoc.bean.r.ClassNode;
 import org.zpaul.javadoc.bean.r.FieldNode;
 import org.zpaul.javadoc.contants.RoughlyType;
@@ -33,20 +31,6 @@ public class ClassNodeUtil {
 				.getFields()
 				.values()
 				.parallelStream();
-		/*List<FieldNode> collect = docStream
-				.filter(k -> ClassNodeUtil.isBaseType(k.getClassName()))
-				.map(FieldNode::of)
-				.collect(Collectors.toList());
-		collect.addAll(docStream
-				               .filter(k -> !ClassNodeUtil.isBaseType(k.getClassName()))
-				               .filter(k -> {
-					               String replace = k.getClassInfo().replace(k.getClassName(), "");
-					               replace = replace.substring(1, replace.length() - 1);
-					               return isBaseType(replace);
-				               })
-				               .map(FieldNode::of)
-				               .collect(Collectors.toList()));*/
-
 		return docStream.map(FieldNode::of)
 		                .sorted(Comparator.comparing(FieldNode::getName))
 		                .distinct()
@@ -101,5 +85,26 @@ public class ClassNodeUtil {
 			return s.substring(s.lastIndexOf(".") + 1);
 		}
 		return s;
+	}
+
+	/**
+	 * @param doc
+	 * @param type     true: field | false: class
+	 *
+	 * @return
+	 */
+	public static String getDesc(AbsDoc doc, boolean type) {
+		String remark = Optional.ofNullable(doc.getComment())
+		                        .map(CommentDoc::getText)
+		                        .orElse("");
+		String annotationVal = "";
+		try {
+			AnnotationDesc annotation = doc.getAnnotation(type ? "io.swagger.annotations.ApiModelProperty" : "io.swagger.annotations.ApiModel");
+			annotationVal = annotation.getData().get("value")[0];
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return remark.length() > annotationVal.length() ? remark : annotationVal;
+
 	}
 }
